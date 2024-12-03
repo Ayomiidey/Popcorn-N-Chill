@@ -1,7 +1,7 @@
 import StarRating from "./StarRating";
 import Loader from "./Loader";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useKey } from "../useKey";
 
 const KEY = "f47a8af6";
 
@@ -27,7 +27,7 @@ export default function MovieDetails({
     Runtime: runtime,
     imdbRating,
     Plot: plot,
-    Released: released,
+    // Released: released,
     Actors: actors,
     Director: director,
     Genre: genre,
@@ -60,17 +60,7 @@ export default function MovieDetails({
     fetchMovieDetail();
   }, [selectedId]);
 
-  useEffect(() => {
-    function callback(e) {
-      if (e.code === "Escape") {
-        onCloseMovie();
-      }
-    }
-    document.addEventListener("keydown", callback);
-    return function () {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [onCloseMovie]);
+  useKey("Escape", onCloseMovie);
 
   useEffect(() => {
     if (!title) return;
