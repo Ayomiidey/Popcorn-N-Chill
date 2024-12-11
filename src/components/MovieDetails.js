@@ -27,7 +27,7 @@ export default function MovieDetails({
     Runtime: runtime,
     imdbRating,
     Plot: plot,
-    // Released: released,
+    Released: released,
     Actors: actors,
     Director: director,
     Genre: genre,
